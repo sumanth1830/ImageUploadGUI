@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            margin: 0;
+        }
+
+        h1 {
+            padding: 30px;
+        }
+
+        ul {
+          list-style-type: none;
+          margin: 0;
+          padding: 0;
+          overflow: hidden;
+          background-color: #333;
+        }
+
+        li {
+          float: left;
+        }
+
+        li a {
+          display: block;
+          color: white;
+          text-align: center;
+          padding: 14px 16px;
+          text-decoration: none;
+        }
+
+        li a:hover:not(.active) {
+          background-color: #111;
+        }
+
+        .active {
+          background-color: #4CAF50;
+        }
+
+        .custom-file-upload  {
+            display: block;
+            width: auto;
+            font-size: 16px;
+            margin: 30px;
+        }
+
+        .custom-file-upload p{
+          margin: 30px;
+        }
+
+        label {
+          display: block;
+          margin-bottom: 5px;
+        }
+
+        img {
+            width: 400px;
+            height: 400px;
+            object-fit: cover;
+            padding: 20px;
+        }
+
+        .center {
+          display: block;
+          margin-left: auto;
+          margin-right: auto;
+          width: 50%;
+        }
+
+        p {
+          margin-left: 30px;
+          font-size: x-large;
+        }
+
+    </style>
+</head>
+<body>
+    {% load static %}
+    <ul>
+      <li><a href="{% url 'home' %}">Home</a></li>
+      <li><a href="/imageupload">ImageUpload</a></li>
+      <li><a href="/posefinder">PoseFinder</a></li>
+    </ul>
+    {%block content%}
+    {% endblock %}
+</body>
+</html>
