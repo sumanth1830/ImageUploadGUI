@@ -1,8 +1,8 @@
 from django.core.files.storage import FileSystemStorage
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
 import os
 import glob
+from .helperfunctions import predict_cnn_model, create_cnn_model
 
 
 # Create your views here.
@@ -26,4 +26,6 @@ def image_pose_finder(request):
     list_of_files = glob.glob('media/*')  # * means all if need specific format then *.csv
     latest_file = max(list_of_files, key=os.path.getctime)
     print(latest_file)
-    return render(request, 'pose_finder.html', {"image_path": latest_file, "pose_name": "Pose Name"})
+    create_cnn_model()
+    result = predict_cnn_model(latest_file)
+    return render(request, 'pose_finder.html', {"image_path": latest_file, "pose_name": result})
